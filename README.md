@@ -385,7 +385,7 @@ In this step, we will use `express.static` to serve up our `index.html` file.
 
 * Call the `use` method on app.
   * For the first argument, call `express.static` and pass in the `public` folder's directory as its first argument.
-* Open up `http://localhost:3005/ in your browser.
+* Open up `http://localhost:3005/` in your browser.
 
 ### Solution
 
