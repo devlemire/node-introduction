@@ -92,14 +92,14 @@ In this step, we will create a javascript file that will keep track of our book 
 ### Instructions
 
 * Create a folder in `server/` called `models`.
-* Inside of `server/models/` create a JS file called `books.js`.
-* Inside of `server/modles/books.js` use `module.exports` to export an empty array.
+* Inside of `server/models/` create a JS file called `books_model.js`.
+* Inside of `server/modles/books_model.js` use `module.exports` to export an empty array.
 
 ### Solution
 
 <details>
 
-<summary> <code> server/models/books.js </code> </summary>
+<summary> <code> server/models/books_model.js </code> </summary>
 
 ```js
 module.exports = [];
