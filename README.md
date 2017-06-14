@@ -2,7 +2,7 @@
 
 # Project Summary
 
-In this project, we will create a node server that will act as a Bookshelf. This server will keep track of Books by being able to add books to a collect, remove from the collection, delete from the collection, and read from the collection. We'll use postman to test our endpoints.
+In this project, we will create a node server that will act as a Bookshelf. This server will keep track of Books by being able to add books to a collect, read from the collection, update the collection, and delete from the collection. We'll use postman to test our endpoints.
 
 ## Step 1
 
@@ -61,8 +61,9 @@ In this step, we will create our server and have it listen on port `3005`.
 
 * Create an `index.js` file in `server/`.
 * Open `server/index.js`.
-* Require `express` and `body-parser`.
+* Require `express` in a variable called `express` and require `body-parser` in a variable called `bodyParser`.
 * Create a variable called `app` that equals `express` invoked. 
+* Call the `use` method on app and pass in `bodyParser`'s `json` method invoked.
 * Call the `listen` method on app. The app should listen on port 3005:
   * The first parameter of `listen` is the port number.
   * The second parameter of `listen` is a function that is called when the app starts listening.
@@ -78,6 +79,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const app = express();
+
+app.use( bodyParser.json() );
 
 const port = 3005;
 app.listen( port, () => { console.log(`Server listening on port ${port}`); } );
@@ -191,6 +194,8 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
+app.use( bodyParser.json() );
+
 const router = require('./routes/books_router');
 
 const port = 3005;
@@ -202,6 +207,27 @@ app.listen( port, () => { console.log(`Server listening on port ${port}`); } );
 <br />
 
 <b> insert giphy here </b>
+
+## Step 9
+
+### Summary
+
+In this step, we will update the controller to be able to handle creating, reading, updating, and deleting books from the collection.
+
+A book will be an object with an `id`, `title`, and `author` property.
+
+### Instructions
+
+* Open `server/controllers/books_controller.js`.
+* Create four properties on the object that's being exported:
+  * create:
+    * This method should be able to add a new book to the collection.
+  * read:
+    * This method should return all books in the collection.
+  * update:
+    * This method should be able to update a book by `id`.
+  * delete:
+    * This method should be able to delete a book by `id`.
 
 
 
