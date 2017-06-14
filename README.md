@@ -16,6 +16,53 @@ In this step, we will create a package.json to keep track of our server's packag
 
 <b>insert giphy here</b>
 
+## Step 2
+
+### Summary
+
+In this step, we will install the most common packages you'll use when making a node server.
+
+### Instructions
+
+* Run `npm install --save express body-parser`
+
+### Solution
+
+<b> insert giphy here </b>
+
+## Step 3
+
+In this step, we will create a `.gitignore` file to ignore the `node_modules` folder `npm install` created.
+
+### Instructions
+
+* Create a `.gitignore` file in the root of the project.
+* Add `node_modules` on the first line and save the file.
+
+### Solution
+
+<details>
+
+<summary> <code> .gitignore </code> </summary>
+
+```
+node_modules
+```
+
+</details>
+
+## Step 4
+
+In this step, we will create our server and have it listen on port `3005`.
+
+## Step 4
+
+### Instructions
+
+* Create an `index.js` file in `server/`.
+* Open `server/index.js`.
+* Require `express` and `body-parser`.
+* 
 
 
 
