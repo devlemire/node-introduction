@@ -160,7 +160,7 @@ module.exports = {
 
 <b> insert giphy here </b>
 
-## Step 7
+## Step 6
 
 ### Summary
 
@@ -187,7 +187,7 @@ When creating a route you can use the `post`, `get`, `put`, and `delete` methods
 ```js
 const express = require('express');
 const bodyParser = require('body-parser');
-const bs = require(__dirname + '/controllers/books_controller.js');
+const bc = require(__dirname + '/controllers/books_controller.js');
 
 const app = express();
 
@@ -205,7 +205,7 @@ app.listen( port, () => { console.log(`Server listening on port ${port}`); } );
 
 </details>
 
-## Step 9
+## Step 7
 
 ### Summary
 
@@ -222,16 +222,15 @@ In this step, we will use postman to test our endpoints
 
 <b> insert giphy here </b>
 
-## Step 13
+## Step 8
 
 ### Summary
 
-In this step, we will use `express.static` to serve up our `index.html` file. 
+In this step, we will use `express.static` to serve up our `index.html` file. `express.static` takes one argument that is the folder you want to server when the server URL is hit. Our front-end was made using `create-react-app` which has a production ready build. We'll want to server the entire `public/build` folder.
 
 ### Instructions
 
-* Call the `use` method on app.
-  * For the first argument, call `express.static` and pass in the `public` folder's directory as its first argument.
+* Call the `use` method on app and pass in `express.static( __dirname + '/../public/build')`.
 * Open up `http://localhost:3005/` in your browser.
 
 ### Solution
@@ -243,17 +242,20 @@ In this step, we will use `express.static` to serve up our `index.html` file.
 ```js
 const express = require('express');
 const bodyParser = require('body-parser');
+const bc = require( __dirname + '/controllers/books_controller');
 
 const app = express();
 
 app.use( bodyParser.json() );
-app.use( express.static( __dirname + "/../public") );
+app.use( express.static( __dirname + "/../public/build") );
 
-const router = require('./routes/books_router');
+const baseURL = "/api/books";
+app.post(baseURL, bc.create);
+app.get(baseURL, bc.read);
+app.put(`${baseURL}/:id`, bc.update);
+app.delete(`${baseURL}/:id`, bc.delete);
 
-app.use('/api/books', router);
-
-const port = 3005;
+const port = 3000;
 app.listen( port, () => { console.log(`Server listening on port ${port}`); } );
 ```
 
