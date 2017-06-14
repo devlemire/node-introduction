@@ -62,8 +62,28 @@ In this step, we will create our server and have it listen on port `3005`.
 * Create an `index.js` file in `server/`.
 * Open `server/index.js`.
 * Require `express` and `body-parser`.
-* 
+* Create a variable called `App` that equals `express` invoked. 
+* Call the `listen` method on App. The app should listen on port 3005:
+  * The first parameter of `listen` is the port number.
+  * The second parameter of `listen` is a function that is called when the App starts listening ( this argument is optional ).
 
+### Solution
+
+<details>
+
+<summary> <code> server/index.js </code> </summary>
+
+```js
+const express = require('express');
+const bodyParser = require('body-parser');
+
+const App = express();
+
+const port = 3005;
+App.listen( port, () => { console.log(`Server listening on port ${port}`); } );
+```
+
+</details>
 
 
 
