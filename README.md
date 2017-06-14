@@ -2,7 +2,7 @@
 
 # Project Summary
 
-In this project, we will create a node server that will act as a Bookshelf. This server will keep track of Books by being able to add books to a collect, read from the collection, update the collection, and delete from the collection. We'll use postman to test our endpoints.
+In this project, we will create a node server that will act as a bookshelf. This server will keep track of books by being able to add books to a collect, read from the collection, update the collection, and delete from the collection. We'll use postman to test our endpoints.
 
 ## Step 1
 
