@@ -57,8 +57,6 @@ node_modules
 
 In this step, we will create our server and have it listen on port `3005`.
 
-## Step 4
-
 ### Instructions
 
 * Create an `index.js` file in `server/`.
@@ -83,6 +81,28 @@ const App = express();
 
 const port = 3005;
 App.listen( port, () => { console.log(`Server listening on port ${port}`); } );
+```
+
+</details>
+
+## Step 5
+
+In this step, we will create a javascript file that will keep track of our book collection.
+
+### Instructions
+
+* Create a folder in `server/` called `models`.
+* Inside of `server/models/` create a JS file called `books.js`.
+* Inside of `server/modles/books.js` use `Module.exports` to export an empty array.
+
+### Solution
+
+<details>
+
+<summary> <code> server/models/books.js </code> </summary>
+
+```js
+module.exports = [];
 ```
 
 </details>
