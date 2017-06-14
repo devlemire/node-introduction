@@ -65,7 +65,7 @@ In this step, we will create our server and have it listen on port `3005`.
 * Create a variable called `App` that equals `express` invoked. 
 * Call the `listen` method on App. The app should listen on port 3005:
   * The first parameter of `listen` is the port number.
-  * The second parameter of `listen` is a function that is called when the App starts listening ( this argument is optional ).
+  * The second parameter of `listen` is a function that is called when the App starts listening.
 
 ### Solution
 
