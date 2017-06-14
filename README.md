@@ -226,7 +226,7 @@ In this step, we will use postman to test our endpoints
 
 ### Summary
 
-In this step, we will use `express.static` to serve up our `index.html` file. `express.static` takes one argument that is the folder you want to server when the server URL is hit. Our front-end was made using `create-react-app` which has a production ready build. We'll want to server the entire `public/build` folder.
+In this step, we will use `express.static` to serve up our `index.html` file. `express.static` takes an argument that is the folder location you want to serve when the server URL is hit in a browser. Our front-end was made using `create-react-app` which has a production ready build. We'll want to server the entire `public/build` folder.
 
 ### Instructions
 
