@@ -118,8 +118,10 @@ In this step, we will create a javascript file that will handle all the logic of
 
 * Create a folder in `server/` called `controllers`.
 * Inside of `server/controllers/` create a JS file called `books_controller.js`.
-* Inside of `server/controllers/books_controller.js` use `module.exports` to export an empty object.
-  * We'll put method on this object later.
+* Open `server/controllers/books_controller.js`.
+* Import `books_model.js` at the top of the file.
+* Use `module.exports` to export an empty object.
+  * We'll put methods on this object later.
 
 ### Solution
 
@@ -128,6 +130,8 @@ In this step, we will create a javascript file that will handle all the logic of
 <summary> <code> server/controllers/books_controller.js </code> </summary>
 
 ```js
+const books = require(__dirname + "/../models/books_model.js");
+
 module.exports = {};
 ```
 
@@ -164,6 +168,11 @@ module.exports = router;
 
 </details>
 
+## Step 8
+
+### Summary
+
+In this step, we will 
 
 
 
