@@ -55,7 +55,7 @@ node_modules
 
 ## Step 4
 
-In this step, we will create our server and have it listen on port `3005`.
+In this step, we will create our server and have it listen on port `3000`.
 
 ### Instructions
 
@@ -90,156 +90,35 @@ app.listen( port, () => { console.log(`Server listening on port ${port}`); } );
 
 ## Step 5
 
-In this step, we will create a javascript file that will keep track of our book collection.
+### Summary
 
-### Instructions
-
-* Create a folder in `server/` called `models`.
-* Inside of `server/models/` create a JS file called `books_model.js`.
-* Inside of `server/modles/books_model.js` use `module.exports` to export an empty array.
-
-### Solution
-
-<details>
-
-<summary> <code> server/models/books_model.js </code> </summary>
-
-```js
-module.exports = [];
-```
-
-</details>
-
-
-## Step 6
-
-### Summary 
-
-In this step, we will create a javascript file that will handle all the logic of reading, creating, updating, and deleting books from the collection.
+In this step, we will create a controller that keeps track of the book collection and has methods that can create books, read books, update books, and delete books.
 
 ### Instructions
 
 * Create a folder in `server/` called `controllers`.
-* Inside of `server/controllers/` create a JS file called `books_controller.js`.
+* In `server/controllers/` create a file called `books_controller.js`.
 * Open `server/controllers/books_controller.js`.
-* Import `books_model.js` at the top of the file.
-* Use `module.exports` to export an empty object.
-  * We'll put methods on this object later.
+* Create a variable called `books` that equals an empty array.
+  * A book will be an object that has an `id`, `title`, and `author` property.
+* Create a variable called `id` that equals `0`.
+  * After a creation of a book, we will increment this by `1` to insure no books have the same `id`.
+* Use `module.exports` to export an object.
+* On the object created a method called `create`, `read`, `update`, and `delete`.
+  * Create - This method should be able to add a new book to the collection using the `request body`.
+  * Read - This method should return all books in the collection.
+  * Update - This method should be able to update a book by an id from the `request query parameters`.
+  * Delete - This method should be able to delete a book by an id from the `request query parameters`.
+* All methods should return the entire books array.
 
 ### Solution
 
 <details>
 
-<summary> <code> server/controllers/books_controller.js </code> </summary>
+<summary> <code> server/controller/books_controller.js </code> </summary>
 
 ```js
-const books = require(__dirname + "/../models/books_model.js");
-
-module.exports = {};
-```
-
-</details>
-
-## Step 7
-
-### Summary
-
-In this step, we will create a javascript file that will handle the routing of our server.
-
-### Instructions
-
-* Create a folder in `server/` called `routes`.
-* Inside of `server/routes` create a JS file called `books_router.js`.
-* Open `server/routes/books_router.js`.
-* At the top of the file, require `express` and the books_controller.
-* Create a router by invoking the `Router` method on express.
-* Use `module.exports` to export the router.
-
-### Solution
-
-<details>
-
-<summary> <code> server/routes/books_router.js </code> </summary>
-
-```js
-const express = require('express');
-const bc = require(__dirname + '/../controllers/books_controller.js');
-const router = express.Router();
-
-module.exports = router;
-```
-
-</details>
-
-## Step 8
-
-### Summary
-
-In this step, we will import our router into `server/index.js` and run our server to make sure everything has been setup correctly.
-
-### Instructions
-
-* Import the books router from `server/routes/books_router.js`.
-* Start the api by running `node index.js` or `nodemon` ( make sure your terminal is in the server directory ).
-
-### Solution
-
-<details>
-
-<summary> <code> server/index.js </code> </summary>
-
-```js
-const express = require('express');
-const bodyParser = require('body-parser');
-
-const app = express();
-
-app.use( bodyParser.json() );
-
-const router = require('./routes/books_router');
-
-const port = 3005;
-app.listen( port, () => { console.log(`Server listening on port ${port}`); } );
-```
-
-</details>
-
-<br />
-
-<b> insert giphy here </b>
-
-## Step 9
-
-### Summary
-
-In this step, we will update the controller to be able to handle creating, reading, updating, and deleting books from the collection.
-
-A book will be an object with an `id`, `title`, and `author` property.
-
-### Instructions
-
-* Open `server/controllers/books_controller.js`.
-* Create four properties on the object that's being exported:
-  * create:
-    * This method should be able to add a new book to the collection using the `request body`.
-  * read:
-    * This method should return all books in the collection.
-  * update:
-    * This method should be able to update a book by an `id` from the `request query parameters`.
-    * This method should use the request body to update the values of the book object.
-  * delete:
-    * This method should be able to delete a book by an `id` from the `request query parameters`.
-* Have all four methods send a response of the updated books array.
-
-### Solution
-
-<details>
-
-<summary> <code> server/controllers/books_controller.js </code> </summary>
-
-```js
-let books = require(__dirname + "/../models/books_model.js");
-
+let books = [];
 let id = 0;
 
 module.exports = {
@@ -263,7 +142,7 @@ module.exports = {
       title: req.body.title || books[ index ].title,
       author: req.body.author || books[ index ].author
     };
-    
+
     res.status(200).send( books );
   },
 
@@ -277,62 +156,27 @@ module.exports = {
 
 </details>
 
-## Step 10
+<br />
+
+<b> insert giphy here </b>
+
+## Step 7
 
 ### Summary
 
-In this step, we will connect our router to the controller's methods. We'll connect our router by calling methods on it. The first argument will always be the URL of the request and the second parameter will always be what function to execute.
+In this step, we will import our controller into `server/index.js` and create a routes that use the methods on the controller.
+
+When creating a route you can use the `post`, `get`, `put`, and `delete` methods on app. The first argument is the URL of the request and the second argument is what function to execute when that URL is hit.
 
 ### Instructions
 
-* Open `server/routes/books_router.js`.
-* Call the `post` method on `router`.
-  * Use `/` for the first argument.
-  * Use the `create` method from the books controller for the second argument.
-* Call the `get` method on `router`.
-  * Use `/` for the first argument.
-  * Use the `read` method from the books controller for the second argument.
-* Call the `put` method on `router`.
-  * Use `/:id` for the first argument.
-    * `:id` allows us to create a parameter on the URL.
-  * Use the `update` method from the books controller for the second argument.
-* Call the `delete` method on `router`.
-  * Use `/:id` for the first argument.
-  * Use the `delete` method from the books controller for the second argument.
-
-### Solution
-
-<details>
-
-<summary> <code> server/routes/books_router.js </code> </summary>
-
-```js
-const express = require('express');
-const bc = require(__dirname + '/../controllers/books_controller.js');
-const router = express.Router();
-
-router.post('/', bc.create);
-router.get('/', bc.read);
-router.put('/:id', bc.update);
-router.delete('/:id', bc.delete);
-
-module.exports = router;
-```
-
-</details>
-
-## Step 11
-
-### Summary
-
-In this step, we'll hook up our router to our server.
-
-### Instructions
-
-* Open `server/index.js`
-* Call the `use` method on `app`.
-  * Use `/api/books` as the first argument.
-  * Use `router` as the second argument.
+* Open `server/index.js`.
+* Require the books controller under the router.
+* Above `port` create four routes on `app`:
+  * `post` - `/api/books`, `bc.create`.
+  * `get` - `/api/books`, `bc.read`.
+  * `put` - `/api/books/:id`, `bc.update`.
+  * `delete` - `/api/books/:id`, `bc.delete`
 
 ### Solution
 
@@ -343,14 +187,17 @@ In this step, we'll hook up our router to our server.
 ```js
 const express = require('express');
 const bodyParser = require('body-parser');
+const bs = require(__dirname + '/controllers/books_controller.js');
 
 const app = express();
 
 app.use( bodyParser.json() );
 
-const router = require('./routes/books_router');
-
-app.use('/api/books', router);
+const baseURL = "/api/books";
+app.post(baseURL, bc.create);
+app.get(baseURL, bc.read);
+app.put(`${baseURL}/:id`, bc.update);
+app.delete(`${baseURL}/:id`, bc.delete);
 
 const port = 3005;
 app.listen( port, () => { console.log(`Server listening on port ${port}`); } );
@@ -358,7 +205,7 @@ app.listen( port, () => { console.log(`Server listening on port ${port}`); } );
 
 </details>
 
-## Step 12
+## Step 9
 
 ### Summary
 

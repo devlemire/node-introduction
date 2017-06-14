@@ -1,5 +1,4 @@
-let books = require(__dirname + "/../models/books_model.js");
-
+let books = [];
 let id = 0;
 
 module.exports = {
@@ -11,6 +10,7 @@ module.exports = {
   },
 
   read: ( req, res ) => {
+    console.log('GET HIT:', req.headers);
     res.status(200).send( books );
   },
 
@@ -23,7 +23,7 @@ module.exports = {
       title: req.body.title || books[ index ].title,
       author: req.body.author || books[ index ].author
     };
-    
+
     res.status(200).send( books );
   },
 
