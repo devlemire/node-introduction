@@ -6,7 +6,10 @@ module.exports = {
     console.log( title, author );
   },
 
-  read: ( req, res ) => res.status(200).send( books ),
+  read: ( req, res ) => {
+    console.log('read hit');
+    res.status(200).send( books );
+  },
 
   update: ( req, res ) => {
     const deleteID = req.params.id;
