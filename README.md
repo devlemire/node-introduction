@@ -172,7 +172,34 @@ module.exports = router;
 
 ### Summary
 
-In this step, we will 
+In this step, we will import our router into `server/index.js` and run our server to make sure everything has been setup correctly.
+
+### Instructions
+
+* Import the books router from `server/routes/books_router.js`.
+* Start the api by running `node index.js` or `nodemon` ( make sure your terminal is in the server directory ).
+
+### Solution
+
+<details>
+
+<summary> <code> server/index.js </code> </summary>
+
+```js
+const express = require('express');
+const bodyParser = require('body-parser');
+
+const app = express();
+
+const router = require('./routes/books_router');
+
+const port = 3005;
+app.listen( port, () => { console.log(`Server listening on port ${port}`); } );
+```
+
+</details>
+
+<b> insert giphy here </b>
 
 
 
