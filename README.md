@@ -221,13 +221,25 @@ A book will be an object with an `id`, `title`, and `author` property.
 * Open `server/controllers/books_controller.js`.
 * Create four properties on the object that's being exported:
   * create:
-    * This method should be able to add a new book to the collection.
+    * This method should be able to add a new book to the collection using the `request body`.
   * read:
     * This method should return all books in the collection.
   * update:
-    * This method should be able to update a book by `id`.
+    * This method should be able to update a book by an `id` from the `request query parameters`.
   * delete:
-    * This method should be able to delete a book by `id`.
+    * This method should be able to delete a book by an `id` from the `request query parameters`.
+
+### Solution
+
+<details>
+
+<summary> <code> server/controllers/books_controller.js </code> </summary>
+
+```js
+
+```
+
+</details>
 
 
 
