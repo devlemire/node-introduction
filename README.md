@@ -281,6 +281,82 @@ module.exports = {
 
 ### Summary
 
+In this step, we will connect our router to the controller's methods. We'll connect our router by calling methods on it. The first argument will always be the URL of the request and the second parameter will always be what function to execute.
+
+### Instructions
+
+* Open `server/routes/books_router.js`.
+* Call the `post` method on `router`.
+  * Use `/` for the first argument.
+  * Use the `create` method from the books controller for the second argument.
+* Call the `get` method on `router`.
+  * Use `/` for the first argument.
+  * Use the `read` method from the books controller for the second argument.
+* Call the `put` method on `router`.
+  * Use `/:id` for the first argument.
+    * `:id` allows us to create a parameter on the URL.
+  * Use the `update` method from the books controller for the second argument.
+* Call the `delete` method on `router`.
+  * Use `/:id` for the first argument.
+  * Use the `delete` method from the books controller for the second argument.
+
+### Solution
+
+<details>
+
+<summary> <code> server/routes/books_router.js </code> </summary>
+
+```js
+const express = require('express');
+const bc = require(__dirname + '/../controllers/books_controller.js');
+const router = express.Router();
+
+router.post('/', bc.create);
+router.get('/', bc.read);
+router.put('/:id', bc.update);
+router.delete('/:id', bc.delete);
+
+module.exports = router;
+```
+
+</details>
+
+## Step 11
+
+### Summary
+
+In this step, we'll hook up our router to our server.
+
+### Instructions
+
+* Open `server/index.js`
+* Call the `use` method on `app`.
+  * Use `/api/books` as the first argument.
+  * Use `router` as the second argument.
+
+### Solution
+
+<details>
+
+<summary> <code> server/index.js </code> </summary>
+
+```js
+const express = require('express');
+const bodyParser = require('body-parser');
+
+const app = express();
+
+app.use( bodyParser.json() );
+
+const router = require('./routes/books_router');
+
+app.use('/api/books', router);
+
+const port = 3005;
+app.listen( port, () => { console.log(`Server listening on port ${port}`); } );
+```
+
+</details>
 
 
 
