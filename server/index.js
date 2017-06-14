@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const app = express();
 
 app.use( bodyParser.json() );
+app.use( express.static( __dirname + "/../public") );
 
 const router = require('./routes/books_router');
 

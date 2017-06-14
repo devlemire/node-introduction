@@ -375,12 +375,46 @@ In this step, we will use postman to test our endpoints
 
 <b> insert giphy here </b>
 
+## Step 13
 
+### Summary
 
+In this step, we will use `express.static` to serve up our `index.html` file. 
 
+### Instructions
 
+* Call the `use` method on app.
+  * For the first argument, call `express.static` and pass in the `public` folder's directory as its first argument.
+* Open up `http://localhost:3005/ in your browser.
 
+### Solution
 
+<details>
+
+<summary> <code> server/index.js </code> </summary>
+
+```js
+const express = require('express');
+const bodyParser = require('body-parser');
+
+const app = express();
+
+app.use( bodyParser.json() );
+app.use( express.static( __dirname + "/../public") );
+
+const router = require('./routes/books_router');
+
+app.use('/api/books', router);
+
+const port = 3005;
+app.listen( port, () => { console.log(`Server listening on port ${port}`); } );
+```
+
+</details>
+
+<br />
+
+<b> insert giphy here </b>
 
 ## Contributions
 
