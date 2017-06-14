@@ -1,23 +1,35 @@
-const books = require(__dirname + "/../models/books_model.js");
+let books = require(__dirname + "/../models/books_model.js");
+
+let id = 0;
 
 module.exports = {
   create: ( req, res ) => {
     const { title, author } = req.body;
-    console.log( title, author );
+    books.push( { id, title, author } );
+    id++;
+    res.status(200).send( books );
   },
 
   read: ( req, res ) => {
-    console.log('read hit');
     res.status(200).send( books );
   },
 
   update: ( req, res ) => {
-    const deleteID = req.params.id;
-    console.log( deleteID );
+    const updateID = req.params.id;
+    let index = books.findIndex( book => book.id == updateID );
+
+    books[ index ] = {
+      id: books[ index ].id,
+      title: req.body.title || books[ index ].title,
+      author: req.body.author || books[ index ].author
+    };
+    
+    res.status(200).send( books );
   },
 
   delete: ( req, res ) => {
     const deleteID = req.params.id;
-    console.log(deleteID);
+    books = books.filter( book => book.id != deleteID );
+    res.status(200).send( books );
   }
 };

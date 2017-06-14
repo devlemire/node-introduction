@@ -226,8 +226,10 @@ A book will be an object with an `id`, `title`, and `author` property.
     * This method should return all books in the collection.
   * update:
     * This method should be able to update a book by an `id` from the `request query parameters`.
+    * This method should use the request body to update the values of the book object.
   * delete:
     * This method should be able to delete a book by an `id` from the `request query parameters`.
+* Have all four methods send a response of the updated books array.
 
 ### Solution
 
@@ -236,10 +238,49 @@ A book will be an object with an `id`, `title`, and `author` property.
 <summary> <code> server/controllers/books_controller.js </code> </summary>
 
 ```js
+let books = require(__dirname + "/../models/books_model.js");
 
+let id = 0;
+
+module.exports = {
+  create: ( req, res ) => {
+    const { title, author } = req.body;
+    books.push( { id, title, author } );
+    id++;
+    res.status(200).send( books );
+  },
+
+  read: ( req, res ) => {
+    res.status(200).send( books );
+  },
+
+  update: ( req, res ) => {
+    const updateID = req.params.id;
+    let index = books.findIndex( book => book.id == updateID );
+
+    books[ index ] = {
+      id: books[ index ].id,
+      title: req.body.title || books[ index ].title,
+      author: req.body.author || books[ index ].author
+    };
+    
+    res.status(200).send( books );
+  },
+
+  delete: ( req, res ) => {
+    const deleteID = req.params.id;
+    books = books.filter( book => book.id != deleteID );
+    res.status(200).send( books );
+  }
+};
 ```
 
 </details>
+
+## Step 10
+
+### Summary
+
 
 
 
