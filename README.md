@@ -358,8 +358,22 @@ app.listen( port, () => { console.log(`Server listening on port ${port}`); } );
 
 </details>
 
+## Step 12
 
+### Summary
 
+In this step, we will use postman to test our endpoints
+
+### Instructions
+
+* Create three books.
+* Get all books.
+* Update a book.
+* Delete a book.
+
+### Solution
+
+<b> insert giphy here </b>
 
 
 
