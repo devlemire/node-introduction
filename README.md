@@ -93,7 +93,7 @@ In this step, we will create a javascript file that will keep track of our book 
 
 * Create a folder in `server/` called `models`.
 * Inside of `server/models/` create a JS file called `books.js`.
-* Inside of `server/modles/books.js` use `Module.exports` to export an empty array.
+* Inside of `server/modles/books.js` use `module.exports` to export an empty array.
 
 ### Solution
 
@@ -107,6 +107,62 @@ module.exports = [];
 
 </details>
 
+
+## Step 6
+
+### Summary 
+
+In this step, we will create a javascript file that will handle all the logic of reading, creating, updating, and deleting books from the collection.
+
+### Instructions
+
+* Create a folder in `server/` called `controllers`.
+* Inside of `server/controllers/` create a JS file called `books_controller.js`.
+* Inside of `server/controllers/books_controller.js` use `module.exports` to export an empty object.
+  * We'll put method on this object later.
+
+### Solution
+
+<details>
+
+<summary> <code> server/controllers/books_controller.js </code> </summary>
+
+```js
+module.exports = {};
+```
+
+</details>
+
+## Step 7
+
+### Summary
+
+In this step, we will create a javascript file that will handle the routing of our server.
+
+### Instructions
+
+* Create a folder in `server/` called `routes`.
+* Inside of `server/routes` create a JS file called `books_router.js`.
+* Open `server/routes/books_router.js`.
+* At the top of the file, require `express` and the books_controller.
+* Create a router by invoking the `Router` method on express.
+* Use `module.exports` to export the router.
+
+### Solution
+
+<details>
+
+<summary> <code> server/routes/books_router.js </code> </summary>
+
+```js
+const express = require('express');
+const bc = require(__dirname + '/../controllers/books_controller.js');
+const router = express.Router();
+
+module.exports = router;
+```
+
+</details>
 
 
 
