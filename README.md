@@ -109,8 +109,8 @@ In this step, we will create a controller that keeps track of the book collectio
   * Read - This method should return all books in the collection.
   * Update - This method should be able to update a book by an id from the `request query parameters`.
   * Delete - This method should be able to delete a book by an id from the `request query parameters`.
-    * If the length of the books array is 0 after deleting, set the global `id` variable back to `0`.
-      * This will allow Postman Unit Tests to be tested without having to restart the server after each run.
+    * If the length of the books array is zero after deleting, set the global `id` variable back to `0`.
+      * This will allow Postman Unit Tests to be tested without having to restart the server after each test run.
 * All methods should return the entire books array.
 
 ### Solution
