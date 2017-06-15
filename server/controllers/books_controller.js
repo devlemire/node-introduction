@@ -29,7 +29,6 @@ module.exports = {
   delete: ( req, res ) => {
     const deleteID = req.params.id;
     books = books.filter( book => book.id != deleteID );
-    if ( books.length === 0 ) { id = 0; }
     res.status(200).send( books );
   }
 };
