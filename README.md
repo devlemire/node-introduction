@@ -158,8 +158,6 @@ module.exports = {
 
 <br />
 
-<b> insert giphy here </b>
-
 ## Step 6
 
 ### Summary
@@ -167,6 +165,8 @@ module.exports = {
 In this step, we will import our controller into `server/index.js` and create a routes that use the methods on the controller.
 
 When creating a route you can use the `post`, `get`, `put`, and `delete` methods on app. The first argument is the URL of the request and the second argument is what function to execute when that URL is hit.
+
+We will also fire up the server to make sure everything has been corrected correctly and that there are no syntax errors.
 
 ### Instructions
 
@@ -177,6 +177,7 @@ When creating a route you can use the `post`, `get`, `put`, and `delete` methods
   * `get` - `/api/books`, `bc.read`.
   * `put` - `/api/books/:id`, `bc.update`.
   * `delete` - `/api/books/:id`, `bc.delete`
+* Run `nodemon` or `node index.js` when in the `server/` directory.
 
 ### Solution
 
@@ -204,6 +205,8 @@ app.listen( port, () => { console.log(`Server listening on port ${port}`); } );
 ```
 
 </details>
+
+<b> insert giphy here </b>
 
 ## Step 7
 
