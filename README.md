@@ -64,7 +64,7 @@ In this step, we will create our server and have it listen on port `3000`.
 * Require `express` in a variable called `express` and require `body-parser` in a variable called `bodyParser`.
 * Create a variable called `app` that equals `express` invoked. 
 * Call the `use` method on app and pass in `bodyParser`'s `json` method invoked.
-* Call the `listen` method on app. The app should listen on port 3005:
+* Call the `listen` method on app. The app should listen on port 3000:
   * The first parameter of `listen` is the port number.
   * The second parameter of `listen` is a function that is called when the app starts listening.
 
@@ -82,7 +82,7 @@ const app = express();
 
 app.use( bodyParser.json() );
 
-const port = 3005;
+const port = 3000;
 app.listen( port, () => { console.log(`Server listening on port ${port}`); } );
 ```
 
@@ -158,8 +158,6 @@ module.exports = {
 
 <br />
 
-<b> insert giphy here </b>
-
 ## Step 6
 
 ### Summary
@@ -167,6 +165,8 @@ module.exports = {
 In this step, we will import our controller into `server/index.js` and create a routes that use the methods on the controller.
 
 When creating a route you can use the `post`, `get`, `put`, and `delete` methods on app. The first argument is the URL of the request and the second argument is what function to execute when that URL is hit.
+
+We will also fire up the server to make sure everything has been corrected correctly and that there are no syntax errors.
 
 ### Instructions
 
@@ -177,6 +177,7 @@ When creating a route you can use the `post`, `get`, `put`, and `delete` methods
   * `get` - `/api/books`, `bc.read`.
   * `put` - `/api/books/:id`, `bc.update`.
   * `delete` - `/api/books/:id`, `bc.delete`
+* Run `nodemon` or `node index.js` when in the `server/` directory.
 
 ### Solution
 
@@ -199,11 +200,13 @@ app.get(baseURL, bc.read);
 app.put(`${baseURL}/:id`, bc.update);
 app.delete(`${baseURL}/:id`, bc.delete);
 
-const port = 3005;
+const port = 3000;
 app.listen( port, () => { console.log(`Server listening on port ${port}`); } );
 ```
 
 </details>
+
+<b> insert giphy here </b>
 
 ## Step 7
 
