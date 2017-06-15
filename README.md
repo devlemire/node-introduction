@@ -236,6 +236,7 @@ In this step, we will use `express.static` to serve up our `index.html` file. `e
 ### Instructions
 
 * Call the `use` method on app and pass in `express.static( __dirname + '/../public/build')`.
+* Add some books to your collection using Postman.
 * Open up `http://localhost:3000` in your browser.
 
 ### Solution
