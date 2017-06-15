@@ -64,7 +64,7 @@ In this step, we will create our server and have it listen on port `3000`.
 * Require `express` in a variable called `express` and require `body-parser` in a variable called `bodyParser`.
 * Create a variable called `app` that equals `express` invoked. 
 * Call the `use` method on app and pass in `bodyParser`'s `json` method invoked.
-* Call the `listen` method on app. The app should listen on port 3005:
+* Call the `listen` method on app. The app should listen on port 3000:
   * The first parameter of `listen` is the port number.
   * The second parameter of `listen` is a function that is called when the app starts listening.
 
@@ -82,7 +82,7 @@ const app = express();
 
 app.use( bodyParser.json() );
 
-const port = 3005;
+const port = 3000;
 app.listen( port, () => { console.log(`Server listening on port ${port}`); } );
 ```
 
@@ -200,7 +200,7 @@ app.get(baseURL, bc.read);
 app.put(`${baseURL}/:id`, bc.update);
 app.delete(`${baseURL}/:id`, bc.delete);
 
-const port = 3005;
+const port = 3000;
 app.listen( port, () => { console.log(`Server listening on port ${port}`); } );
 ```
 
